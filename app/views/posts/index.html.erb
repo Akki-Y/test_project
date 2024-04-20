@@ -1,0 +1,28 @@
+<h1> POSTS PAGE </h1>
+<%=link_to "Add a New Post", new_post_path%><br>
+<%=link_to "Category", categories_path%>
+<br>
+<br>
+<table>
+  <tr>
+    <th>Id</th>
+    <th>Title </th>
+    <th>Description </th>
+    <th>Created At </th>
+    <th>Action </th>
+  </tr>
+<tbody>
+  <%@posts.each do |post| %>
+    <tr>
+      <td><%=post.id%></td>
+      <td><%= post.post_title %></td>
+      <td><%= post.post_description %></td>
+      <td><%= post.created_at%></td>
+      <td>
+      <%= link_to "Edit", edit_post_path(post.id)%>
+      <%= link_to "Delete", post_path(post.id), data: {turbo_method: :delete, turbo_confirm: 'Are you sure?'}%>
+      </td>   
+    </tr>
+  <% end %>
+</tbody>
+</table>

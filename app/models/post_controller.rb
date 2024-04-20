@@ -1,0 +1,2 @@
+class PostController < ApplicationRecord
+end
